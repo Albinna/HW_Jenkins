@@ -1,0 +1,1451 @@
+{
+	"info": {
+		"_postman_id": "9873676a-69ba-440e-a36c-ea9079d81e02",
+		"name": "Albina_Leonova_HW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21835556"
+	},
+	"item": [
+		{
+			"name": "Negative_TEST_HW_13.1",
+			"item": [
+				{
+					"name": "name_with_1_symbol",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"A\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"repeatPassword\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "name_with_21_symbol",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test (\"Message text verification\", function(){\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name has to be from 2 to 20 characters long\")\r",
+									"    })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Aaaaaaaaaaaaaaaaaaaaa\",\r\n  \"lastName\": \"Ivanova\",\r\n  \"email\": \"test+11230@gmail.com\",\r\n  \"password\": \"Qwertyf123456\",\r\n  \"repeatPassword\": \"Qwertyf123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "empty_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test (\"Message text verification\", function(){\r",
+									"    pm.expect(jsonData.message).to.eql(\"\\\"name\\\" is not allowed to be empty\")\r",
+									"    })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \" \" ,\r\n  \"lastName\": \"Ivanova\",\r\n  \"email\": \"test+11230@gmail.com\",\r\n  \"password\": \"Qwertyf123456\",\r\n  \"repeatPassword\": \"Qwertyf123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "name_wirh_symbol",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test (\"Message text verification\", function(){\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name is invalid\")\r",
+									"    })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Albina_\",\r\n  \"lastName\": \"Ivanova\",\r\n  \"email\": \"test+11230@gmail.com\",\r\n  \"password\": \"Qwertyf123456\",\r\n  \"repeatPassword\": \"Qwertyf123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "name_wirh_numbers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test (\"Message text verification\", function(){\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name is invalid\")\r",
+									"    })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Albina1\",\r\n  \"lastName\": \"Ivanova\",\r\n  \"email\": \"test+11230@gmail.com\",\r\n  \"password\": \"Qwertyf123456\",\r\n  \"repeatPassword\": \"Qwertyf123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "number_insted_of_string_in_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test (\"Message text verification\", function(){\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name is invalid\")\r",
+									"    })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": 13,\r\n  \"lastName\": \"Ivanova\",\r\n  \"email\": \"test+11230@gmail.com\",\r\n  \"password\": \"Qwertyf123456\",\r\n  \"repeatPassword\": \"Qwertyf123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "with_nameS_in_key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test (\"Message text verification\", function(){\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name is required\")\r",
+									"    })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"names\": \"{{name}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"Qwertyf123456\",\r\n  \"repeatPassword\": \"Qwertyf123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "without_name_in_JSON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test (\"Message text verification\", function(){\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name is required\")\r",
+									"    })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lastName\": \"Ivanova\",\r\n  \"email\": \"test+112303@gmail.com\",\r\n  \"password\": \"Qwertyf123456\",\r\n  \"repeatPassword\": \"Qwertyf123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HW_13.1_Car",
+			"item": [
+				{
+					"name": "create_user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// генерація рандомного Email\r",
+									"function generateRandomEmail() {\r",
+									"    const chars = 'qwertyhhgfdfg12345';\r",
+									"    let name = '';\r",
+									"    for (let i = 0; i < 10; i ++){\r",
+									"        name += chars.charAt(Math.floor(Math.random()* chars.length))\r",
+									"    }\r",
+									"    const domains = ['com.ua']\r",
+									"    return `${name}@${domains[0]}`\r",
+									"}\r",
+									"\r",
+									"const randomEmail = generateRandomEmail();\r",
+									"pm.environment.set('email', randomEmail);\r",
+									"\r",
+									"\r",
+									"// генерація рандомного Name\r",
+									"function generateRandomName() {\r",
+									"    const chars = 'abcdefghijklmnopqrstuvwxyz'; \r",
+									"    let name = '';\r",
+									"\r",
+									"   const nameLength = Math.floor(Math.random() * 19) + 2 ;\r",
+									"\r",
+									"    for (let i = 0; i < nameLength; i++) {\r",
+									"        name += chars.charAt(Math.floor(Math.random() * chars.length));\r",
+									"    }\r",
+									"\r",
+									"    return name;\r",
+									"}\r",
+									"\r",
+									"const randomName = generateRandomName();\r",
+									"pm.environment.set('name', randomName);\r",
+									"\r",
+									"// генерація рандомного lastName\r",
+									"function generateRandomLastName() {\r",
+									"    const chars = 'abcdefghijklmnopqrstuvwxyz'; \r",
+									"    let lastName = '';\r",
+									"\r",
+									"   const lastNameLength = Math.floor(Math.random() * 19) + 2 ;\r",
+									"\r",
+									"    for (let i = 0; i < lastNameLength; i++) {\r",
+									"        lastName += chars.charAt(Math.floor(Math.random() * chars.length));\r",
+									"    }\r",
+									"\r",
+									"    return lastName;\r",
+									"}\r",
+									"\r",
+									"const randomLastName = generateRandomLastName();\r",
+									"pm.environment.set('lastName', randomLastName);\r",
+									"\r",
+									"\r",
+									"function generatePassword() {\r",
+									"    const lowerChars = 'abcdefghijklmnopqrstuvwxyz';\r",
+									"    const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\r",
+									"    const digits = '0123456789';\r",
+									"    const allChars = lowerChars + upperChars + digits;\r",
+									"    \r",
+									"    let password = '';\r",
+									"    password += lowerChars.charAt(Math.floor(Math.random() * lowerChars.length)); // мінімум одна мала літера\r",
+									"    password += upperChars.charAt(Math.floor(Math.random() * upperChars.length)); // мінімум одна велика літера\r",
+									"    password += digits.charAt(Math.floor(Math.random() * digits.length)); // мінімум одна цифра\r",
+									"\r",
+									"    const passwordLength = Math.floor(Math.random() * 8) + 6; // додаткові символи для загальної довжини 8-15\r",
+									"\r",
+									"    for (let i = 0; i < passwordLength; i++) {\r",
+									"        password += allChars.charAt(Math.floor(Math.random() * allChars.length));\r",
+									"    }\r",
+									"\r",
+									"    // Перемішування паролю, щоб випадкові символи не були в кінці\r",
+									"    password = password.split('').sort(() => 0.5 - Math.random()).join('');\r",
+									"\r",
+									"    return password;\r",
+									"}\r",
+									"\r",
+									"const randomPassword = generatePassword();\r",
+									"const randomRepeatPassword = randomPassword; // Повторення паролю\r",
+									"pm.environment.set('password', randomPassword);\r",
+									"pm.environment.set('repeatPassword', randomRepeatPassword);\r",
+									"\r",
+									"// console.log(pm.variables.get('baseUrl'))\r",
+									"\r",
+									"// const currentEnvironmentInfo = pm.info.environment;\r",
+									"// console.log(currentEnvironmentInfo);\r",
+									"\r",
+									"console.log(pm.environment);\r",
+									"\r",
+									"const currentIterationInfo = pm.info.iteration;\r",
+									"console.log(currentIterationInfo);\r",
+									"\r",
+									"// Отримання поточного методу\r",
+									"const currentMethod = pm.request.method;\r",
+									"console.log(currentMethod);\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"var email = pm.environment.get(\"email\");\r",
+									"\r",
+									"\r",
+									"// check JSON schema\r",
+									"var schema = {\r",
+									"    \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"status\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"userId\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"photoFilename\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"distanceUnits\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"currency\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"userId\",\r",
+									"        \"photoFilename\",\r",
+									"        \"distanceUnits\",\r",
+									"        \"currency\"\r",
+									"      ]\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"status\",\r",
+									"    \"data\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"\r",
+									"// Валідація даних\r",
+									"pm.test(\"Schema is valid\", function () {\r",
+									"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;\r",
+									"\r",
+									"});\r",
+									"\r",
+									"// Тест для перевірки збереженого значення email\r",
+									"pm.test(\"Email has a standard valid mail format\", function () {\r",
+									"    pm.expect(email).to.match(/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/); // Перевірка формату email\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"name\": \"{{name}}\",\r\n//   \"lastName\": \"{{lastName}}\",\r\n//   \"email\": \"{{email}}\",\r\n//   \"password\": \"{{password}}\",\r\n//   \"repeatPassword\": \"{{repeatPassword}}\"\r\n// }\r\n\r\n{\r\n  \"name\": \"{{name}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"repeatPassword\": \"{{password}}\"\r\n}\r\n\r\n\r\n// {\r\n//   \"oldPassword\": \"{{password}}\", // Старий пароль (той, що був згенерований при створенні користувача)\r\n//   \"password\": \"{{newPassword}}\", // Новий пароль, який ви згенеруєте або задасте\r\n//   \"repeatPassword\": \"{{newPassword}}\" // Повторення нового пароля\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edits_user's profile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomDate() {\r",
+									"    // Генерація рандомної дати між 01.01.2000 і сьогодні\r",
+									"    const start = new Date(2000, 0, 1).getTime();\r",
+									"    const end = new Date().getTime();\r",
+									"    const randomTime = Math.floor(Math.random() * (end - start)) + start;\r",
+									"\r",
+									"\r",
+									"    const randomDate = new Date(randomTime);\r",
+									"    return randomDate.toISOString();\r",
+									"}\r",
+									"\r",
+									"const randomDate = generateRandomDate();\r",
+									"pm.environment.set('date', randomDate);\r",
+									"\r",
+									"\r",
+									"\r",
+									"//генерація рандомної країни\r",
+									"function generateRandomCountry() {\r",
+									" const countries = [\r",
+									"        'Ukraine', 'Canada', 'France', 'Germany', 'Japan', 'Brazil', 'Australia', 'India', 'China', 'Norway',\r",
+									"        'United States', 'Mexico', 'Italy', 'Spain', 'Sweden', 'Netherlands', 'Russia', 'South Korea', 'New Zealand', 'Argentina',\r",
+									"        'Switzerland', 'United Kingdom', 'Belgium', 'Austria', 'Denmark', 'Finland', 'Greece', 'Ireland', 'Poland', 'Portugal',\r",
+									"        'South Africa', 'Egypt', 'Turkey', 'Saudi Arabia', 'Israel', 'Indonesia', 'Vietnam', 'Malaysia', 'Thailand', 'Philippines',\r",
+									"        'Singapore', 'Chile', 'Colombia', 'Peru', 'Venezuela', 'Cuba', 'Jamaica', 'Morocco', 'Kenya', 'Nigeria'\r",
+									"    ];\r",
+									"\r",
+									"const randomIndex = Math.floor(Math.random() * countries.length);\r",
+									"    return countries[randomIndex];\r",
+									"}\r",
+									"\r",
+									"const randomCountry = generateRandomCountry();\r",
+									"pm.environment.set('country', randomCountry);\r",
+									"\r",
+									"\r",
+									"//генерація рандомного фото юзера \r",
+									"function generateRandomPhotoName() {\r",
+									"    const timestamp = Date.now(); // Поточна дата та час у мілісекундах\r",
+									"    return `user-${timestamp}.jpg`;\r",
+									"}\r",
+									"\r",
+									"const photoName = generateRandomPhotoName();\r",
+									"pm.environment.set('photo', photoName);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const date = pm.environment.get(\"date\");\r",
+									"const expectedDate = date.slice(0, 19) + \"Z\"; // Відкидаємо мілісекунди\r",
+									"const actualDate = jsonData.data.dateBirth.slice(0, 19) + \"Z\"; // Відкидаємо мілісекунди\r",
+									"\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200, 'OK');\r",
+									"});\r",
+									"\r",
+									"// check JSON schema\r",
+									"var schema = {\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"status\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"userId\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"photoFilename\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"name\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"lastName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"dateBirth\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"country\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"userId\",\r",
+									"        \"photoFilename\",\r",
+									"        \"name\",\r",
+									"        \"lastName\",\r",
+									"        \"dateBirth\",\r",
+									"        \"country\"\r",
+									"      ]\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"status\",\r",
+									"    \"data\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"// Валідація даних\r",
+									"pm.test(\"Schema is valid\", function () {\r",
+									"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"// перевірка Content-Type, що він є в хедері\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check that dateBirth is random\", function () {\r",
+									"    pm.expect(actualDate).to.eql(expectedDate); // Порівнюємо без мілісекунд\r",
+									"});\r",
+									"\r",
+									"// перевірка значень в баді\r",
+									"pm.environment.set(\"userId\", jsonData.data.userId);\r",
+									"pm.environment.set(\"photoFilename\", jsonData.data.photoFilename);\r",
+									"pm.environment.set(\"name\", jsonData.data.name);\r",
+									"pm.environment.set(\"lastName\", jsonData.data.lastName);\r",
+									"pm.environment.set(\"dateBirth\", jsonData.data.dateBirth);\r",
+									"pm.environment.set(\"country\", jsonData.data.country);\r",
+									"\r",
+									"pm.test(\"Checking value in the response body\", function() {\r",
+									"    pm.expect(jsonData.data).to.eql({\r",
+									"        userId: pm.environment.get(\"userId\"),\r",
+									"        photoFilename: pm.environment.get(\"photoFilename\"),\r",
+									"        name: pm.environment.get(\"name\"),\r",
+									"        lastName: pm.environment.get(\"lastName\"),\r",
+									"        dateBirth: pm.environment.get(\"dateBirth\"),\r",
+									"        country: pm.environment.get(\"country\")\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"photo\": \"{{photo}}\",\r\n  \"name\": \"{{name}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"dateBirth\": \"{{date}}\",\r\n  \"country\": \"{{country}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change_user's_password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Зберігаємо старий пароль\r",
+									"const oldPassword = pm.environment.get('password');\r",
+									"pm.environment.set('oldPassword', oldPassword); // Зберігаємо старий пароль для наступного запиту\r",
+									"\r",
+									"// Генеруємо новий пароль\r",
+									"function generateNewPassword() {\r",
+									"    const lowerChars = 'abcdefghijklmnopqrstuvwxyz';\r",
+									"    const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\r",
+									"    const digits = '0123456789';\r",
+									"    const allChars = lowerChars + upperChars + digits;\r",
+									"    \r",
+									"    let newPassword = '';\r",
+									"    newPassword += lowerChars.charAt(Math.floor(Math.random() * lowerChars.length)); // мінімум одна мала літера\r",
+									"    newPassword += upperChars.charAt(Math.floor(Math.random() * upperChars.length)); // мінімум одна велика літера\r",
+									"    newPassword += digits.charAt(Math.floor(Math.random() * digits.length)); // мінімум одна цифра\r",
+									"\r",
+									"    const newPasswordLength = Math.floor(Math.random() * 8) + 6; // загальна довжина 8-15 символів\r",
+									"\r",
+									"    for (let i = 0; i < newPasswordLength; i++) { \r",
+									"        newPassword += allChars.charAt(Math.floor(Math.random() * allChars.length));\r",
+									"    }\r",
+									"\r",
+									"    // Перемішування паролю\r",
+									"    newPassword = newPassword.split('').sort(() => 0.5 - Math.random()).join('');\r",
+									"\r",
+									"    return newPassword;\r",
+									"}\r",
+									"\r",
+									"// Генеруємо новий пароль\r",
+									"const randomNewPassword = generateNewPassword();\r",
+									"pm.environment.set('password', randomNewPassword); // Зберігаємо новий пароль\r",
+									"pm.environment.set('repeatPassword', randomNewPassword); // Повторюємо новий пароль\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"var userId = pm.environment.get(\"userId\");//Отримуємо збережений userId  \r",
+									"\r",
+									"pm.test(\"Check that userId is equal to the one used during creation\", function () {\r",
+									"    pm.expect(jsonData.data.userId).to.eql(parseInt(userId));// Порівнюємо збережений userId\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"oldPassword\": \"{{oldPassword}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"repeatPassword\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response has status\", function() {\r",
+									"    pm.expect(jsonData.hasOwnProperty(\"status\")).to.be.true; // Використання правильної властивості \"status\"\r",
+									"});\r",
+									"\r",
+									"pm.test (\"Check status code\", function(){\r",
+									"    pm.expect(jsonData).to.have.property(\"status\", \"ok\")\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sign_in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"userId\", jsonData.data.userId);\r",
+									"\r",
+									"pm.test(\"Cookies sid exist\", function() {\r",
+									"    pm.expect(pm.cookies.has(\"sid\")).to.be.true; // Використання методу has для перевірки наявності кукі \"sid\"\r",
+									"});\r",
+									"\r",
+									"console.log(pm.cookies.has(\"sid\"))\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check that userId equals the value in the environment\", function () {\r",
+									"    pm.expect(jsonData.data.userId).to.eql(parseInt(pm.environment.get(\"userId\")));\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"remember\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_new_cars",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseData = pm.response.json();\r",
+									"let carId = responseData.data.id;\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"// Зберігаємо `carId` в змінну середовища\r",
+									"pm.environment.set('carId', carId);\r",
+									"\r",
+									"const result = jsonData.data.brand === \"Audi\"; // Порівнюємо userId з відповіддю\r",
+									"\r",
+									"pm.test(\"Check that brand is Audi\", function() {\r",
+									"    pm.expect(result).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const requestBody = {\r",
+									"    name: pm.environment.replaceIn(\"{{name}}\"),\r",
+									"    lastName: pm.environment.replaceIn(\"{{lastName}}\"),\r",
+									"    email: pm.environment.replaceIn(\"{{email}}\"),\r",
+									"    password: pm.environment.replaceIn(\"{{password}}\"),\r",
+									"    repeatPassword: pm.environment.replaceIn(\"{{password}}\"),\r",
+									"}\r",
+									"\r",
+									"const createUserRequest = {\r",
+									"url: \"https://qauto.forstudy.space/api/auth/signin\", // URL для входу\r",
+									"    method: \"POST\",\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"  body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(requestBody)\r",
+									" \r",
+									"        }\r",
+									"    };\r",
+									"\r",
+									"    function sendCreateUserRequest() {\r",
+									"    pm.sendRequest(createUserRequest, function(error, response) {\r",
+									"        if (error) {\r",
+									"            console.log(error);\r",
+									"        } else {\r",
+									"            console.log(response);\r",
+									"\r",
+									"            // Збереження email та пароля з оточення\r",
+									"            pm.environment.set('email', randomEmail);\r",
+									"            pm.environment.set('password', randomPassword);\r",
+									"        }\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Виклик функції\r",
+									"sendCreateUserRequest();\r",
+									"\r",
+									"// pm.sendRequest(createUserRequest,(error, response) => {\r",
+									"//     if (error) {\r",
+									"//         console.log(error);\r",
+									"//     } else {\r",
+									"//         console.log(response);\r",
+									"\r",
+									"//         // Збереження email та пароля з оточення\r",
+									"//         pm.environment.set('email', randomEmail);\r",
+									"//         pm.environment.set('password', randomPassword);\r",
+									"//     }\r",
+									"// });\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 122\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_expenses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"// Отримуємо поточний пробіг із середовища, або встановлюємо значення 210, якщо не встановлено\r",
+									"let currentMileage = parseInt(pm.environment.get('mileage') || '210', 10);\r",
+									"currentMileage += 1; // Збільшуємо пробіг на 1\r",
+									"pm.environment.set('mileage', currentMileage);\r",
+									"\r",
+									"// Отримуємо сьогоднішню дату\r",
+									"let today = new Date();\r",
+									"let formattedDate = today.toISOString(); // Сьогоднішня дата у форматі ISO\r",
+									"pm.environment.set('todayDate', formattedDate);\r",
+									"\r",
+									"// Дата створення авто\r",
+									"let carCreationDate = new Date(\"2024-10-08T04:50:51Z\");\r",
+									"\r",
+									"// Генерація дати для нових витрат\r",
+									"let expenseDate = new Date(carCreationDate); // Встановлюємо дату витрат на дату створення авто\r",
+									"expenseDate.setDate(carCreationDate.getDate() + 1); // Додаємо 1 день для витратної дати\r",
+									"let formattedExpenseDate = expenseDate.toISOString();\r",
+									"pm.environment.set('expenseDate', formattedExpenseDate);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Отримуємо сьогоднішню дату\r",
+									"let today = new Date();\r",
+									"let formattedDate = today.toISOString(); // Форматуємо дату у ISO 8601\r",
+									"\r",
+									"// Зберігаємо дату в змінну середовища\r",
+									"pm.environment.set('reportedAt', formattedDate);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"carId\": {{carId}},\r\n  \"reportedAt\": \"{{reportedAt}}\",\r\n  \"mileage\": {{mileage}},\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status is ok\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.eql(\"ok\");\r",
+									"});\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: 'https://qauto.forstudy.space/api/users', \r",
+									"    method: 'GET'\r",
+									"}, function (err, res) {\r",
+									"    pm.test(\"User is deleted\", function () {\r",
+									"        pm.expect(res).to.have.status(404); \r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tests - HW_15.1",
+			"item": [
+				{
+					"name": "Check name length error",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Масив імен для перевірки\r",
+									"const testNames = [\"A\", \"A\".repeat(21)];\r",
+									"\r",
+									"// Отримуємо поточний індекс (якщо він існує)\r",
+									"let index = pm.environment.get(\"nameIndex\") || 0;\r",
+									"\r",
+									"// Встановлюємо значення імені з масиву\r",
+									"pm.environment.set(\"name\", testNames[index]);\r",
+									"\r",
+									"console.log(\"Current name being tested:\", testNames[index]);\r",
+									"\r",
+									"// Оновлюємо індекс для наступного запиту\r",
+									"index = (index + 1) % testNames.length;\r",
+									"pm.environment.set(\"nameIndex\", index);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Check error - Name has to be from 2 to 20 characters long\", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name has to be from 2 to 20 characters long\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"repeatPassword\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check name is invalid error",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Масив імен для перевірки\r",
+									"const testNames = [\"Al_\", \"Al2\", 13];\r",
+									"\r",
+									"// Отримуємо поточний індекс (якщо він існує)\r",
+									"let index = pm.environment.get(\"nameIndex\") || 0;\r",
+									"\r",
+									"// Встановлюємо значення імені з масиву\r",
+									"pm.environment.set(\"name\", testNames[index]);\r",
+									"\r",
+									"console.log(\"Current name being tested:\", testNames[index]);\r",
+									"\r",
+									"// Оновлюємо індекс для наступного запиту\r",
+									"index = (index + 1) % testNames.length;\r",
+									"pm.environment.set(\"nameIndex\", index);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Check Name is invalid error\", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name is invalid\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"repeatPassword\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Name is required error",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Отримуємо значення з середовища\r",
+									"const lastName = pm.environment.get(\"{{lastName}}\"); \r",
+									"const email = pm.environment.get(\"{{email}}\"); \r",
+									"const password = pm.environment.get(\"{{password}}\");\r",
+									"const name = pm.environment.get(\"{{name}}\");\r",
+									"\r",
+									"let requestBody;\r",
+									"\r",
+									"// Якщо name відсутній, формуємо запит без name\r",
+									"if (!name) {\r",
+									"    requestBody = {\r",
+									"        lastName: lastName,\r",
+									"        email: email,\r",
+									"        password: password,\r",
+									"        repeatPassword: password\r",
+									"    };\r",
+									"    pm.environment.set(\"requestBody\", JSON.stringify(requestBody));\r",
+									"} else {\r",
+									"    // Якщо name присутній, формуємо запит з неправильним ключем 'names'\r",
+									"    requestBody = {\r",
+									"        names: name, // Неправильний ключ\r",
+									"        lastName: lastName,\r",
+									"        email: email,\r",
+									"        password: password,\r",
+									"        repeatPassword: password\r",
+									"    };\r",
+									"    pm.environment.set(\"requestBody\", JSON.stringify(requestBody));\r",
+									"}\r",
+									"\r",
+									"// Встановлюємо requestBody в Postman\r",
+									"pm.request.body.raw = JSON.stringify(requestBody);\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Check Name is required error \", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Name is required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"repeatPassword\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
